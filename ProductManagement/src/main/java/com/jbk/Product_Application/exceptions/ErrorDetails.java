@@ -7,6 +7,8 @@ public class ErrorDetails {
 	private String errorMsg;
 	private String errorDescription;
 	private Date timestamp;
+	
+	
 	public ErrorDetails(String errorMsg, String errorDescription, Date timestamp) {
 		super();
 		this.errorMsg = errorMsg;

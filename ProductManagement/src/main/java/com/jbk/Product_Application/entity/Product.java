@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 import javax.validation.constraints.NotNull;
 
@@ -13,89 +13,89 @@ import javax.validation.constraints.NotNull;
 public class Product {
 	
 	@Id
-	@Column(name="product_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer productId;
+	private Integer product_id;
 	
-	@Column(name="product_name",unique = true)
+	@Column(unique = true,nullable=false)
 	@NotNull
-	private String productName;
+	private String product_name;
 	
-	@Column(name="supplier_id")
 	@NotNull(message="supplierId field missing in body")
 	@NotBlank(message="supplierId can not be blank")
-	private Integer supplierId;
+	private String supplier_id;
 	
-	@Column(name="quantity_per_unit")
+	
 	@NotNull(message="quantityPerUnit field missing in body")
 	@NotBlank(message="quantityPerUnit can not be blank")
-	private String quantityPerUnit;
+	private String quantity_per_unit;
 	
-	@Column(name="unit_price")
 	@NotNull
-	private Double unitPrice;
-	
+	private Double unit_price;
+
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product(Integer productId, String productName, Integer supplierId, String quantityPerUnit,
-			Double unitPrice) {
+	public Product(Integer product_id, @NotNull String product_name,
+			@NotNull(message = "supplierId field missing in body") @NotBlank(message = "supplierId can not be blank") String supplier_id,
+			@NotNull(message = "quantityPerUnit field missing in body") @NotBlank(message = "quantityPerUnit can not be blank") String quantity_per_unit,
+			@NotNull Double unit_price) {
 		super();
-		this.productId = productId;
-		this.productName = productName;
-		this.supplierId = supplierId;
-		this.quantityPerUnit = quantityPerUnit;
-		this.unitPrice = unitPrice;
+		this.product_id = product_id;
+		this.product_name = product_name;
+		this.supplier_id = supplier_id;
+		this.quantity_per_unit = quantity_per_unit;
+		this.unit_price = unit_price;
 	}
 
-	public Integer getProductId() {
-		return productId;
+	public Integer getProduct_id() {
+		return product_id;
 	}
 
-	public void setProductId(Integer productId) {
-		this.productId = productId;
+	public void setProduct_id(Integer product_id) {
+		this.product_id = product_id;
 	}
 
-	public String getProductName() {
-		return productName;
+	public String getProduct_name() {
+		return product_name;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 
-	public Integer getSupplierId() {
-		return supplierId;
+	public String getSupplier_id() {
+		return supplier_id;
 	}
 
-	public void setSupplierId(Integer supplierId) {
-		this.supplierId = supplierId;
+	public void setSupplier_id(String supplier_id) {
+		this.supplier_id = supplier_id;
 	}
 
-	public String getQuantityPerUnit() {
-		return quantityPerUnit;
+	public String getQuantity_per_unit() {
+		return quantity_per_unit;
 	}
 
-	public void setQuantityPerUnit(String quantityPerUnit) {
-		this.quantityPerUnit = quantityPerUnit;
+	public void setQuantity_per_unit(String quantity_per_unit) {
+		this.quantity_per_unit = quantity_per_unit;
 	}
 
-	public Double getUnitPrice() {
-		return unitPrice;
+	public Double getUnit_price() {
+		return unit_price;
 	}
 
-	public void setUnitPrice(Double unitPrice) {
-		this.unitPrice = unitPrice;
+	public void setUnit_price(Double unit_price) {
+		this.unit_price = unit_price;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", supplierId=" + supplierId
-				+ ", quantityPerUnit=" + quantityPerUnit + ", unitPrice=" + unitPrice + "]";
+		return "Product [product_id=" + product_id + ", product_name=" + product_name + ", supplier_id=" + supplier_id
+				+ ", quantity_per_unit=" + quantity_per_unit + ", unit_price=" + unit_price + "]";
 	}
 	
+
 	
 	
 	

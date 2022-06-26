@@ -9,16 +9,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class GlobalExceptionHandler{
 	
 	@ExceptionHandler(ProductAlreadyExistException.class)
 	public ResponseEntity<ErrorDetails> alreadyExist(ProductAlreadyExistException p)
 	{
-		ErrorDetails errorDetails=new ErrorDetails(p.getMessage(), 
-				"you are trying to insert the Product which already Present in Database", 
-				new Date());
+		ErrorDetails errorDetails=new ErrorDetails(p.getMessage(), "you are trying to insert the Product which already Present in Database", new Date());
 		return new ResponseEntity<>(errorDetails,HttpStatus.CONFLICT);
 		
 	}

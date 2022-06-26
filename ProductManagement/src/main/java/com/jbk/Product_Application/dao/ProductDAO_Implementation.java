@@ -35,7 +35,7 @@ public class ProductDAO_Implementation implements ProductDAO {
 			Product p=null;
 			
 			Criteria criteria=session.createCriteria(Product.class);
-			criteria.add(Restrictions.eq("productName", product.getProductName()));
+			criteria.add(Restrictions.eq("productName", product.getProduct_name()));
 			p=(Product) criteria.uniqueResult();
 			Transaction t = session.beginTransaction();
 			
@@ -148,13 +148,13 @@ public class ProductDAO_Implementation implements ProductDAO {
 			Product p=null;
 			
 			Criteria criteria=session.createCriteria(Product.class);
-			criteria.add(Restrictions.eq("productName", product.getProductName()));
+			criteria.add(Restrictions.eq("productName", product.getProduct_name()));
 			p=(Product) criteria.uniqueResult();
 			
-			p.setProductName(product.getProductName());
-			p.setQuantityPerUnit(product.getQuantityPerUnit());
-			p.setSupplierId(product.getSupplierId());
-			p.setUnitPrice(product.getUnitPrice());
+			p.setProduct_name(product.getProduct_name());
+			p.setQuantity_per_unit(product.getQuantity_per_unit());
+			p.setSupplier_id(product.getSupplier_id());
+			p.setUnit_price(product.getUnit_price());
 			Transaction t = session.beginTransaction();
 			if(p!=null)
 			{

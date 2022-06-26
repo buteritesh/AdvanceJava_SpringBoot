@@ -2,6 +2,7 @@ package com.jbk.Product_Application.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,8 +81,16 @@ public class ProductController {
 		if (b) {
 			return new ResponseEntity<>("Product updated !!!", HttpStatus.OK);
 		} else {
-			throw new ProductNotFoundException("Product : "+product.getProductName()+" does not exist !!!");
+			throw new ProductNotFoundException("Product : "+product.getProduct_name()+" does not exist !!!");
 		}
+	}
+	
+	@GetMapping(value="generatereport")
+	public ResponseEntity<String> generateReport(@RequestParam String format,HttpServletResponse response)
+	{
+		String msg=productService.generateReport(format,response);
+		return new ResponseEntity<>(msg, HttpStatus.OK);
+		
 	}
 
 }
